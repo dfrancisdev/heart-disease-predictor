@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f4f4f4;
+        }
+        .result-box {
+            background: white;
+            padding: 20px;
+            margin: 100px auto;
+            width: 300px;
+            border-radius: 10px;
+        }
+        .high-risk {
+            color: red;
+            font-weight: bold;
+        }
+        .low-risk {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="result-box">
+
+    <h2>Prediction Result</h2>
+
+    {% if prediction == 1 %}
+        <p class="high-risk">⚠ High Risk of Heart Disease</p>
+    {% else %}
+        <p class="low-risk">✅ Low Risk of Heart Disease</p>
+    {% endif %}
+
+    <br>
+    <a href="/">Go Back</a>
+
+</div>
+
+</body>
+</html>

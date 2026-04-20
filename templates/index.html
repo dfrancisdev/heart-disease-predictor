@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            text-align: center;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            margin: auto;
+            width: 300px;
+            border-radius: 10px;
+        }
+        input {
+            margin: 5px;
+            padding: 8px;
+            width: 90%;
+        }
+        input[type="submit"] {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Heart Disease Prediction System</h2>
+
+<form action="/predict" method="post">
+
+    <input type="number" name="age" placeholder="Age" required>
+    <input type="number" name="sex" placeholder="Sex (1=Male, 0=Female)" required>
+    <input type="number" name="cp" placeholder="Chest Pain Type (0-3)" required>
+    <input type="number" name="trestbps" placeholder="Resting BP" required>
+    <input type="number" name="chol" placeholder="Cholesterol" required>
+    <input type="number" name="fbs" placeholder="Fasting Blood Sugar (0/1)" required>
+    <input type="number" name="restecg" placeholder="Rest ECG (0-2)" required>
+    <input type="number" name="thalch" placeholder="Max Heart Rate" required>
+    <input type="number" name="exang" placeholder="Exercise Angina (0/1)" required>
+    <input type="number" step="any" name="oldpeak" placeholder="Oldpeak" required>
+    <input type="number" name="slope" placeholder="Slope (0-2)" required>
+    <input type="number" name="ca" placeholder="CA (0-3)" required>
+    <input type="number" name="thal" placeholder="Thal (1-3)" required>
+
+    <input type="submit" value="Predict">
+
+</form>
+
+</body>
+</html>
