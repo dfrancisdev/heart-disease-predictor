@@ -21,21 +21,20 @@ def predict():
         cp = int(request.form['cp'])
         bp = int(request.form['bp'])
         if bp == 1:
-         trestbps = 140
-    else:
+        trestbps = 140
+        else:
         trestbps = 120
-       
         chol_simple = int(request.form['chol'])
         if chol_simple == 1:
         chol = 240
-    else:
+        else:
         chol = 200
         fbs = int(request.form['fbs'])
        
         hr = int(request.form['hr'])
         if hr == 1:
         thalch = 150
-    else:
+        else:
         thalch = 100
         
         exang = int(request.form['exang'])
