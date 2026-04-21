@@ -53,7 +53,7 @@ def predict():
 
         return render_template("result.html", prediction=prediction[0])
 
-     except Exception as e:
+    except Exception as e:
      print("ERROR:", e)
      return render_template("result.html", prediction="error")
 
