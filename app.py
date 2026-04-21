@@ -19,13 +19,12 @@ def predict():
         age = int(request.form['age'])
         sex = int(request.form['sex'])
         cp = int(request.form['cp'])
-        
         bp = int(request.form['bp'])
          if bp == 1:
         trestbps = 140
     else:
         trestbps = 120
-        
+       
         chol_simple = int(request.form['chol'])
         if chol_simple == 1:
         chol = 240
