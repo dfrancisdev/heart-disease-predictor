@@ -20,7 +20,7 @@ def predict():
         sex = int(request.form['sex'])
         cp = int(request.form['cp'])
         bp = int(request.form['bp'])
-         if bp == 1:
+        if bp == 1:
         trestbps = 140
     else:
         trestbps = 120
