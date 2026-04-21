@@ -53,9 +53,9 @@ def predict():
 
         return render_template("result.html", prediction=prediction[0])
 
-   except Exception as e:
-    print("ERROR:", e)
-    return render_template("result.html", prediction="error")
+     except Exception as e:
+     print("ERROR:", e)
+     return render_template("result.html", prediction="error")
 
 
 if __name__ == "__main__":
