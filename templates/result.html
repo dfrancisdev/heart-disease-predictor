@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Prediction Result</title>
     <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            background: #f4f4f4;
-        }
-        .result-box {
-            background: white;
-            padding: 20px;
-            margin: 100px auto;
-            width: 300px;
-            border-radius: 10px;
-        }
-        .high-risk {
-            color: red;
-            font-weight: bold;
-        }
-        .low-risk {
-            color: green;
-            font-weight: bold;
-        }
+      body {
+        font-family: Arial;
+        text-align: center;
+        background: #f4f4f4;
+      }
+      .result-box {
+        background: white;
+        padding: 20px;
+        margin: 100px auto;
+        width: 300px;
+        border-radius: 10px;
+      }
+      .high-risk {
+        color: red;
+        font-weight: bold;
+      }
+      .low-risk {
+        color: green;
+        font-weight: bold;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="result-box">
+      <h2>Prediction Result</h2>
 
-<div class="result-box">
+      {% if prediction == "error" %}
+      <p style="color: orange; font-weight: bold">
+        ⚠ Something went wrong. Please try again.
+      </p>
 
-    <h2>Prediction Result</h2>
+      {% elif prediction == 1 %}
+      <p class="high-risk">⚠ High Risk of Heart Disease</p>
 
-    {% if prediction == 1 %}
-        <p class="high-risk">⚠ High Risk of Heart Disease</p>
-    {% else %}
-        <p class="low-risk">✅ Low Risk of Heart Disease</p>
-    {% endif %}
+      {% elif prediction == 0 %}
+      <p class="low-risk">✅ Low Risk of Heart Disease</p>
 
-    <br>
-    <a href="/">Go Back</a>
+      {% endif %}
 
-</div>
-
-</body>
+      <br />
+      <a href="/">Go Back</a>
+    </div>
+  </body>
 </html>
