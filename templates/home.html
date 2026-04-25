@@ -98,7 +98,25 @@
         <button type="submit">Check My Risk</button>
       </form>
 
-      <div id="result"></div>
+     <div id="result">
+     {% if prediction %}
+    
+     {% if prediction == "1" %}
+      <p style="color:red; font-weight:bold;">
+        ⚠️ High Risk of Heart Disease
+      </p>
+     {% elif prediction == "0" %}
+      <p style="color:green; font-weight:bold;">
+        ✅ Low Risk of Heart Disease
+      </p>
+     {% else %}
+      <p style="color:orange;">
+        ⚠ Something went wrong
+      </p>
+     {% endif %}
+
+   {% endif %}
+   </div>
     </section>
   </body>
 </html>
