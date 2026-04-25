@@ -17,6 +17,12 @@
       </div>
     </nav>
 
+    {% with messages = get_flashed_messages() %}
+       {% if messages %}
+          <p style="color:green; text-align:center; margin-top:80px;">{{ messages[0] }}</p>
+       {% endif %}
+    {% endwith %}
+
     <!-- HOME -->
     <section id="home" class="home">
       <h1>Check Your Heart Health Risk</h1>
