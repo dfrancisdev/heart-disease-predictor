@@ -1,4 +1,123 @@
-from flask import Flask, request, redirect, render_template, session, flash
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f8fb;
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* HOME */
+.home {
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.home button {
+  padding: 12px 25px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* FORM */
+.form-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  width: 100%;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+/* RESULT */
+#result {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+/* HERO SECTION UPGRADE */
+.home {
+  text-align: center;
+  padding: 140px 20px 80px;
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  color: white;
+}
+
+.home h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.home p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.home button {
+  background: white;
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* 🔵 RISK GAUGE */
+.gauge-container {
+  width: 100%;
+  max-width: 400px;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  margin: 10px auto;
+  overflow: hidden;
+}
+
+.gauge-fill {
+  height: 100%;
+  transition: width from flask import Flask, request, redirect, render_template, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 import joblib
 import numpy as np
@@ -202,6 +321,15 @@ def predict():
         elif result == "0":
            explanation = "Your risk appears low based on your current health indicators. Maintain a healthy lifestyle to keep your heart strong."
 
+           # 📊 Feature contribution (simple scoring system)
+           contributions = {
+               "Age": age / 100,
+               "Blood Pressure": bp * 1.0,
+               "Cholesterol": chol_simple * 1.0,
+               "Blood Sugar": fbs * 1.0,
+               "Chest Pain": exang * 1.0
+            }
+
         # 💾 Save to history
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
@@ -228,6 +356,7 @@ def predict():
             prediction="error",
             explanation="Something went wrong. Please try again.",
             risk_score=0,
+            contributions=contributions,
             username=session['user']
 )
 
@@ -236,4 +365,5 @@ import os
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port)0.5s ease-in-out;
+}
