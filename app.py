@@ -357,6 +357,7 @@ def predict():
             explanation="Something went wrong. Please try again.",
             risk_score=0,
             contributions=contributions,
+            contributions={}
             username=session['user']
 )
 
