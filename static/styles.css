@@ -101,5 +101,22 @@ button {
 .home button {
   background: white;
   color: #007bff;
+
+ /* 🔵 RISK GAUGE */
+.gauge-container {
+  width: 100%;
+  max-width: 400px;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  margin: 10px auto;
+  overflow: hidden;
+}
+
+.gauge-fill {
+  height: 100%;
+  background: linear-gradient(to right, green, yellow, red);
+  transition: width 0.5s ease-in-out;
+} 
   font-weight: bold;
 }
