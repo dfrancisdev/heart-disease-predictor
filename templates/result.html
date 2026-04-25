@@ -41,7 +41,13 @@
       <p class="low-risk">✅ Low Risk of Heart Disease</p>
 
       {% endif %}
-      <h2>Your Result: {{ prediction }}</h2>
+     {% if prediction == "1" %}
+     <h2 style="color:red;">⚠️ High Risk of Heart Disease</h2>
+     {% elif prediction == "0" %}
+     <h2 style="color:green;">✅ Low Risk of Heart Disease</h2>
+     {% else %}
+  <h2>Error in prediction</h2>
+{% endif %}
 
       <br />
       <a href="/">Go Back</a>
