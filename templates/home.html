@@ -119,6 +119,9 @@
      {% if risk_score is not none %}
        <p style="font-size:18px; font-weight:bold; margin-top:10px;">
          Risk Score: {{ risk_score }}%
+         <div class="gauge-container">
+         <div class="gauge-fill" style="width: {{ risk_score }}%;"></div>
+         </div>
        </p>
     {% endif %}    
 
