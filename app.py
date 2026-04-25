@@ -24,7 +24,14 @@ def init_db():
             password TEXT
         )
     ''')
-    
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT,
+        age INTEGER,
+        prediction TEXT
+        )
+    ''')
     conn.commit()
     conn.close()
 
@@ -35,7 +42,7 @@ def home():
     if 'user' not in session:
         return redirect('/login')
     
-    return render_template("index.html")
+    return render_template("home.html")
 
 
 #🔑 STEP 2: Register (Create Account)
@@ -92,6 +99,29 @@ def logout():
     return redirect('/')
 
 
+# 📜 History Page
+@app.route('/history')
+def history():
+    if 'user' not in session:
+        return redirect('/login')
+
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+
+    # ⚠️ We will create this table later
+    c.execute("SELECT * FROM history WHERE username=?", (session['user'],))
+    records = c.fetchall()
+
+    conn.close()
+
+    return render_template("history.html", records=records)
+
+
+# ℹ️ About Page
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
 @app.route('/predict', methods=['POST'])
 def predict():
     if 'user' not in session:
@@ -132,8 +162,21 @@ def predict():
 
         # Make prediction
         prediction = model.predict(data)
+        result = str(prediction[0])
 
-        return render_template("result.html", prediction=prediction[0])
+        # 💾 Save to history
+        conn = sqlite3.connect('database.db')
+        c = conn.cursor()
+
+        c.execute(
+            "INSERT INTO history (username, age, prediction) VALUES (?, ?, ?)",
+            (session['user'], age, result)
+        )
+
+        conn.commit()
+        conn.close()
+
+       return render_template("result.html", prediction=result)
 
     except Exception as e:
         print("ERROR:", e)
