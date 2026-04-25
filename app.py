@@ -229,7 +229,7 @@ def predict():
             explanation=explanation,
             risk_score=risk_score,
             contributions=contributions,
-            username=session['user']
+            username=session('user')
 )
     except Exception as e:
         print("FULL ERROR:", e)
@@ -239,7 +239,7 @@ def predict():
             explanation=str(e),
             risk_score=0,
             contributions={},
-            username=session['user']
+            username=session('user')
 )
 
 
