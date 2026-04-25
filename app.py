@@ -1,6 +1,4 @@
-from flask import request, redirect, render_template
-from flask import session
-from flask import Flask
+from flask import Flask, request, redirect, render_template, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 import joblib
 import numpy as np
@@ -42,7 +40,7 @@ def home():
     if 'user' not in session:
         return redirect('/login')
     
-    return render_template("home.html")
+    return render_template("home.html", username=session['user'])
 
 
 #🔑 STEP 2: Register (Create Account)
@@ -60,7 +58,7 @@ def register():
             c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
             conn.commit()
         except:
-            return "User already exists"
+            return render_template("register.html", error="User already exists")
 
         conn.close()
         return redirect('/login')
@@ -78,25 +76,25 @@ def login():
 
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
-
         c.execute("SELECT * FROM users WHERE username=?", (username,))
         user = c.fetchone()
         conn.close()
 
         if user and check_password_hash(user[2], password):
-
            session['user'] = username
+           flash("Login successful!")
            return redirect('/')
         else:
-            return "Invalid credentials"
+           return render_template("login.html", error="Invalid username or password")
 
     return render_template('login.html')
 
 #🚪 STEP 4: Logout
 @app.route('/logout')
 def logout():
-    session.pop('user', None)
-    return redirect('/')
+    session.clear()
+    flash("You have been logged out")
+    return redirect('/login')
 
 
 # 📜 History Page
@@ -120,6 +118,9 @@ def history():
 # ℹ️ About Page
 @app.route('/about')
 def about():
+    if 'user' not in session:
+        return redirect('/login')
+
     return render_template("about.html")
 
 @app.route('/predict', methods=['POST'])
