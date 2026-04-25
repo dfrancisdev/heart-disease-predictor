@@ -101,8 +101,10 @@ button {
 .home button {
   background: white;
   color: #007bff;
+  font-weight: bold;
+}
 
- /* 🔵 RISK GAUGE */
+/* 🔵 RISK GAUGE */
 .gauge-container {
   width: 100%;
   max-width: 400px;
@@ -115,8 +117,5 @@ button {
 
 .gauge-fill {
   height: 100%;
-  background: linear-gradient(to right, green, yellow, red);
   transition: width 0.5s ease-in-out;
-} 
-  font-weight: bold;
 }
