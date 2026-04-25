@@ -116,6 +116,11 @@
      {% endif %}
        <p style="margin-top:10px; font-size:16px; color:#333;">
          {{ explanation }}
+     {% if risk_score is not none %}
+       <p style="font-size:18px; font-weight:bold; margin-top:10px;">
+         Risk Score: {{ risk_score }}%
+       </p>
+    {% endif %}    
 
    {% endif %}
    </div>
