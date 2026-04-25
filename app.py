@@ -176,7 +176,7 @@ def predict():
         conn.commit()
         conn.close()
 
-       return render_template("result.html", prediction=result)
+        return render_template("result.html", prediction=result)
 
     except Exception as e:
         print("ERROR:", e)
