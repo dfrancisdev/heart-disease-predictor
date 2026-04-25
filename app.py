@@ -177,11 +177,11 @@ def predict():
         conn.commit()
         conn.close()
 
-        return render_template("result.html", prediction=result)
+        return render_template("home.html", prediction=result, username=session['user'])
 
     except Exception as e:
         print("ERROR:", e)
-        return render_template("result.html", prediction="error")
+        return render_template("home.html", prediction="error", username=session['user'])
 
 
 import os
