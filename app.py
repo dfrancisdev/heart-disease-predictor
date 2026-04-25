@@ -347,6 +347,7 @@ def predict():
             prediction=result,
             explanation=explanation,
             risk_score=risk_score,
+            contributions=contributions,
             username=session['user']
 )
     except Exception as e:
