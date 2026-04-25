@@ -232,11 +232,11 @@ def predict():
             username=session['user']
 )
     except Exception as e:
-        print("ERROR:", e)
+        print("FULL ERROR:", e)
         return render_template(
             "home.html",
             prediction="error",
-            explanation="Something went wrong. Please try again.",
+            explanation=str(e),
             risk_score=0,
             contributions={},
             username=session['user']
