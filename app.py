@@ -165,6 +165,39 @@ def predict():
         prediction = model.predict(data)
         result = str(prediction[0])
 
+        # 🧠 Generate explanation (AI-style reasoning)
+        explanation = ""
+
+        if result == "1":
+           explanation = "Your risk is high due to "
+
+           reasons = []
+   
+           if age > 50:
+              reasons.append("your age")
+
+           if bp == 1:
+              reasons.append("high blood pressure")
+
+           if chol_simple == 1:
+              reasons.append("high cholesterol")
+
+           if fbs == 1:
+              reasons.append("high blood sugar")
+
+           if exang == 1:
+              reasons.append("exercise-related chest pain")
+
+           if reasons:
+              explanation += ", ".join(reasons)
+           else:
+              explanation += "a combination of health indicators"
+
+           explanation += ". Consider lifestyle changes and consulting a doctor."
+
+        elif result == "0":
+           explanation = "Your risk appears low based on your current health indicators. Maintain a healthy lifestyle to keep your heart strong."
+
         # 💾 Save to history
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
@@ -177,11 +210,20 @@ def predict():
         conn.commit()
         conn.close()
 
-        return render_template("home.html", prediction=result, username=session['user'])
-
+        return render_template(
+            "home.html",
+            prediction=result,
+            explanation=explanation,
+            username=session['user']
+)
     except Exception as e:
         print("ERROR:", e)
-        return render_template("home.html", prediction="error", username=session['user'])
+        return render_template(
+            "home.html",
+            prediction="error",
+            explanation="Something went wrong. Please try again.",
+            username=session['user']
+)
 
 
 import os
