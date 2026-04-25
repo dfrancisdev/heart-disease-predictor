@@ -4,7 +4,35 @@
     <meta charset="UTF-8" />
     <title>HeartCare AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
+  <script>
+  const contributions = {{ contributions | tojson | safe }};
+
+  const labels = Object.keys(contributions);
+  const values = Object.values(contributions);
+
+  const ctx = document.getElementById('contributionChart').getContext('2d');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Contributing Factors',
+        data: values,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
   <body>
     <!-- NAVBAR -->
     <nav>
@@ -99,6 +127,7 @@
       </form>
 
      <div id="result">
+       <canvas id="contributionChart" width="400" height="200"></canvas>
      {% if prediction %}
     
      {% if prediction == "1" %}
@@ -136,7 +165,10 @@
           </div>
         </div>
        </p>
-    {% endif %}    
+    {% endif %}  
+       {% if contributions %}
+         <canvas id="contributionChart"></canvas>
+       {% endif %}
 
    {% endif %}
    </div>
