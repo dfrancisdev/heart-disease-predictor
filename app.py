@@ -163,7 +163,9 @@ def predict():
 
         # Make prediction
         prediction = model.predict(data)
+        probability = model.predict_proba(data)
         result = str(prediction[0])
+        risk_score = round(probability[0][1] * 100, 2)
 
         # 🧠 Generate explanation (AI-style reasoning)
         explanation = ""
@@ -214,6 +216,7 @@ def predict():
             "home.html",
             prediction=result,
             explanation=explanation,
+            risk_score=risk_score,
             username=session['user']
 )
     except Exception as e:
@@ -222,6 +225,7 @@ def predict():
             "home.html",
             prediction="error",
             explanation="Something went wrong. Please try again.",
+            risk_score=0,
             username=session['user']
 )
 
