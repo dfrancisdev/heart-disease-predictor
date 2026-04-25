@@ -325,7 +325,7 @@ def predict():
            contributions = {
                "Age": age / 100,
                "Blood Pressure": bp * 1.0,
-               "Cholesterol": chol_simple * 1.0,
+               "Cholesterol": chol * 1.0,
                "Blood Sugar": fbs * 1.0,
                "Chest Pain": exang * 1.0
             }
