@@ -1,32 +1,25 @@
-<body>
+{% extends "base.html" %}
 
-<nav>
-  <h2>💙 HeartCare AI</h2>
-  <a href="/">Home</a>
-  <a href="/history">History</a>
-  <a href="/about">About</a>
-  <a href="/logout">Logout</a>
-</nav>
+{% block content %}
 
-<div class="container">
-  <h2>About HeartCare AI</h2>
-  <p>
-    This application predicts the risk of heart disease using a trained Machine Learning model.
-  </p>
+<h2>About HeartCare AI</h2>
 
-  <h3>🧠 How it works</h3>
-  <ul>
-    <li>User inputs health data</li>
-    <li>Model processes risk factors</li>
-    <li>Prediction is generated instantly</li>
-  </ul>
+<p>
+  This application predicts heart disease risk using a trained Machine Learning model.
+</p>
 
-  <h3>⚙️ Built With</h3>
-  <ul>
-    <li>Flask</li>
-    <li>Python</li>
-    <li>Machine Learning</li>
-  </ul>
-</div>
+<h3>🧠 How it works</h3>
+<ul>
+  <li>User inputs health data</li>
+  <li>Model processes risk factors</li>
+  <li>Prediction is generated instantly</li>
+</ul>
 
-</body>
+<h3>⚙️ Built With</h3>
+<ul>
+  <li>Flask</li>
+  <li>Python</li>
+  <li>Machine Learning</li>
+</ul>
+
+{% endblock %}
