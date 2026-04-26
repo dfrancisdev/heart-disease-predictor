@@ -5,6 +5,8 @@ import numpy as np
 import sqlite3
 
 app = Flask(__name__)
+app.config['PROPAGATE_EXCEPTIONS'] = True
+app.debug = True
 
 app.secret_key = "df_heartcare_ai_2026_secure"
 # Load trained model
@@ -233,19 +235,20 @@ def predict():
 )
     except Exception as e:
         print("FULL ERROR:", e)
-        return render_template(
+        return raise e 
             "home.html",
             prediction="error",
             explanation=str(e),
             risk_score=0,
             contributions={},
             username=session('user')
-)
+
 
 
 import os
 
 if __name__ == "__main__":
+
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
 
