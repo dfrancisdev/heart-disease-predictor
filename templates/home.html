@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>HeartCare AI</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  
-  <body>
-    <!-- NAVBAR -->
-    <nav>
-      <h2>💙 HeartCare AI</h2>
-      <div>
-        <a href="/">Home</a>
-        <a href="/history">History</a>
-        <a href="/about">About</a>
-        <a href="/logout">Logout</a>
-      </div>
-    </nav>
+{% extends "base.html" %}
+
+{% block content %}
 
     {% with messages = get_flashed_messages() %}
        {% if messages %}
@@ -140,12 +123,9 @@
         </div>
        </p>
     {% endif %}  
-       {% if contributions %}
-         
-       {% endif %}
 
    {% endif %}
    </div>
     </section>
-  </body>
-</html>
+
+{% endblock %}
