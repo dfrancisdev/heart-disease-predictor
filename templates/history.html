@@ -1,44 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>History - HeartCare AI</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block content %}
 
-<nav>
-  <h2>💙 HeartCare AI</h2>
-  <a href="/">Home</a>
-  <a href="/history">History</a>
-  <a href="/about">About</a>
-  <a href="/logout">Logout</a>
-</nav>
+<h2>Your Prediction History</h2>
 
-<div class="container">
-  <h2>Your Prediction History</h2>
+<table>
+  <tr>
+    <th>Age</th>
+    <th>Prediction</th>
+  </tr>
 
-  <table>
-    <tr>
-      <th>Age</th>
-      <th>Prediction</th>
-    </tr>
+  {% for row in history %}
+  <tr>
+    <td>{{ row[0] }}</td>
+    <td>
+      {% if row[1] == "1" %}
+        🔴 High Risk
+      {% else %}
+        🟢 Low Risk
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 
-    {% for row in history %}
-    <tr>
-      <td>{{ row[0] }}</td>
-      <td>
-        {% if row[1] == "1" %}
-          🔴 High Risk
-        {% else %}
-          🟢 Low Risk
-        {% endif %}
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
+<a href="/" class="btn">Check Again</a>
 
-  <a href="/" class="btn">Check Again</a>
-</div>
-</body>
-</html>
+{% endblock %}
