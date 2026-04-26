@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HeartCare AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+<!-- 🧭 NAVBAR -->
+<nav>
+  <div class="nav-left">
+    <h2>💙 HeartCare AI</h2>
+  </div>
+
+  <div class="nav-right">
+    <a href="/">Home</a>
+    <a href="/history">History</a>
+    <a href="/about">About</a>
+    <a href="/logout" class="logout-btn">Logout</a>
+  </div>
+</nav>
+
+<!-- 📦 PAGE CONTENT -->
+<div class="container">
+  {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
