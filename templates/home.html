@@ -7,36 +7,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   
-  {% if contributions and contributions|length > 0 %}
-<script>
-  const contributions = {{ contributions | tojson | safe }};
-
-  const labels = Object.keys(contributions);
-  const values = Object.values(contributions);
-
-  const ctx = document.getElementById('contributionChart').getContext('2d');
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Contributing Factors',
-        data: values,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>
-{% endif %}
-
   <body>
     <!-- NAVBAR -->
     <nav>
@@ -171,7 +141,7 @@
        </p>
     {% endif %}  
        {% if contributions %}
-         <canvas id="contributionChart"></canvas>
+         
        {% endif %}
 
    {% endif %}
