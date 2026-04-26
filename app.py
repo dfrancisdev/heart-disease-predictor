@@ -43,8 +43,7 @@ def home():
         "home.html",
         prediction=None,
         explanation=None,
-        risk_score=None,
-        contributions={},   # ✅ ADD THIS
+        risk_score=None,   
         username=session.get('user')
     ) 
 
