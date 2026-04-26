@@ -235,7 +235,7 @@ def predict():
 )
     except Exception as e:
         print("FULL ERROR:", e)
-        return raise e 
+        raise e 
             "home.html",
             prediction="error",
             explanation=str(e),
