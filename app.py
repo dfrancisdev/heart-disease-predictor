@@ -206,11 +206,11 @@ def predict():
 
            # 📊 Feature contribution (simple scoring system)
            contributions = {
-               "Age": age / 100,
-               "Blood Pressure": bp * 1.0,
-               "Cholesterol": chol * 1.0,
-               "Blood Sugar": fbs * 1.0,
-               "Chest Pain": exang * 1.0
+               "Age": float(age) / 100,
+               "Blood Pressure": float(bp),
+               "Cholesterol": float(chol),
+               "Blood Sugar": float(fbs),
+               "Chest Pain": float(exang)
             }
 
         # 💾 Save to history
