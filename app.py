@@ -167,7 +167,7 @@ def predict():
         prediction = model.predict(data)
         probability = model.predict_proba(data)
         result = str(prediction[0])
-        risk_score = float(round(probability[0][1] * 100, 2)
+        risk_score = float(round(probability[0][1] * 100, 2))
         # 🔍 DEBUG TIP (ADD HERE)
         print("Risk Score:", risk_score)
 
