@@ -207,7 +207,7 @@ def predict():
         elif result == "0":
            explanation = "Your risk appears low based on your current health indicators. Maintain a healthy lifestyle to keep your heart strong."
 
-           # 📊 Feature contribution (simple scoring system)
+       
      
 
         # 💾 Save to history
@@ -227,7 +227,6 @@ def predict():
             prediction=result,
             explanation=explanation,
             risk_score=risk_score,
-            contributions=contributions,
             username=session.get('user')
 )
     except Exception as e:
