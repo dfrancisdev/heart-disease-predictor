@@ -209,12 +209,12 @@ def predict():
            explanation = "Your risk appears low based on your current health indicators. Maintain a healthy lifestyle to keep your heart strong."
 
            # 📊 Feature contribution (simple scoring system)
-           contributions = {
-               "Age": float(age) / 100,
-               "Blood Pressure": float(bp),
-               "Cholesterol": float(chol),
-               "Blood Sugar": float(fbs),
-               "Chest Pain": float(exang)
+        contributions = {
+          "Age": float(age) / 100,
+          "Blood Pressure": float(bp),
+          "Cholesterol": float(chol),
+          "Blood Sugar": float(fbs),
+          "Chest Pain": float(exang)
             }
 
         # 💾 Save to history
