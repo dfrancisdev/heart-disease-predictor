@@ -236,13 +236,7 @@ def predict():
     except Exception as e:
         print("FULL ERROR:", e)
         raise e 
-            "home.html",
-            prediction="error",
-            explanation=str(e),
-            risk_score=0,
-            contributions={},
-            username=session('user')
-
+           
 
 
 import os
