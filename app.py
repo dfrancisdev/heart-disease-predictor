@@ -39,10 +39,14 @@ init_db()
 
 @app.route('/')
 def home():
-    if 'user' not in session:
-        return redirect('/login')
-    
-    return render_template("home.html", username=session['user'])
+    return render_template(
+        "home.html",
+        prediction=None,
+        explanation=None,
+        risk_score=None,
+        contributions={},   # ✅ ADD THIS
+        username=session.get('user')
+    ) 
 
 
 #🔑 STEP 2: Register (Create Account)
