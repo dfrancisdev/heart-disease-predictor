@@ -232,3 +232,16 @@ td {
   background: #eee;
   border-radius: 20px;
 }
+
+.cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background: #ff6b6b;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
