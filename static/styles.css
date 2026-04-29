@@ -198,3 +198,15 @@ td {
 }
   transition: width 0.5s ease-in-out;
 }
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #ff6b6b, #ff9f43);
+  color: white;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
