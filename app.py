@@ -162,11 +162,25 @@ def predict():
         ca = 0
         thal = 2
 
+        print("DEBUG INPUTS:")
+        print("Age:", age)
+        print("Sex:", sex)
+        print("Chest Pain (cp):", cp)
+        print("Blood Pressure (bp):", bp, "| trestbps:", trestbps)
+        print("Chol (raw):", chol_simple, "| chol:", chol)
+        print("FBS:", fbs)
+        print("Heart Rate input:", hr, "| thalach:", thalach)
+        print("Exang:", exang)
+
+
+        
+
         # Arrange data EXACTLY as in training
         data = np.array([[age, sex, cp, trestbps, chol, fbs, restecg,
                           thalch, exang, oldpeak, slope, ca, thal]])
 
         # Make prediction
+        print("MODEL INPUT:", data)
         prediction = model.predict(data)
         probability = model.predict_proba(data)
         result = str(prediction[0])
@@ -174,6 +188,7 @@ def predict():
         # 🔍 DEBUG TIP (ADD HERE)
         print("Risk Score:", risk_score)
 
+        
         # 🧠 Generate explanation (AI-style reasoning)
         explanation = ""
 
