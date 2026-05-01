@@ -2,28 +2,50 @@
 
 {% block content %}
 
-<h2>Your Prediction History</h2>
+<h2>📊 Your Prediction History</h2>
 
-<table>
-  <tr>
-    <th>Age</th>
-    <th>Prediction</th>
-  </tr>
+<!-- ✅ INSERT NEW CODE HERE -->
+<div class="history-container">
+  {% for item in history %}
+    <div class="history-card">
 
-  {% for row in history %}
-  <tr>
-    <td>{{ row[0] }}</td>
-    <td>
-      {% if row[1] == "1" %}
-        🔴 High Risk
-      {% else %}
-        🟢 Low Risk
-      {% endif %}
-    </td>
-  </tr>
+      <h3>
+        {% if item.prediction == "1" %}
+          🔴 High Risk
+        {% else %}
+          🟢 Low Risk
+        {% endif %}
+      </h3>
+
+      <p><strong>Risk Score:</strong> {{ item.risk_score }}%</p>
+
+  <div class="mini-bar">
+    <div class="mini-fill"
+       style="width: {{ item.risk_score }}%;
+       background:
+       {% if item.risk_score < 40 %} green
+       {% elif item.risk_score < 70 %} orange
+       {% else %} red
+       {% endif %};">
+    </div>
+  </div>
+
+      <p class="timestamp">
+        {{ item.date }}
+      </p>
+
+    </div>
   {% endfor %}
-</table>
+</div>
 
-<a href="/" class="btn">Check Again</a>
+{% else %}
+
+<div class="empty-state">
+  <h3>No predictions yet</h3>
+  <p>Start by checking your heart risk.</p>
+  <a href="/" class="btn">Check Now</a>
+</div>
+
+{% endif %}
 
 {% endblock %}
