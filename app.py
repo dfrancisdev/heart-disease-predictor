@@ -188,6 +188,9 @@ def predict():
         risk_score = float(round(probability[0][1] * 100, 2))
         # 🔍 DEBUG TIP (ADD HERE)
         print("Risk Score:", risk_score)
+        # 🛡️ Safety rule (override unrealistic low risk)
+        if bp == 1 and chol_simple == 1 and exang == 1:
+            risk_score = max(risk_score, 70)
 
         
         # 🧠 Generate explanation (AI-style reasoning)
