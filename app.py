@@ -30,6 +30,9 @@ def init_db():
         username TEXT,
         age INTEGER,
         prediction TEXT
+        risk_score REAL,
+        date TEXT
+    )  
         )
     ''')
     conn.commit()
