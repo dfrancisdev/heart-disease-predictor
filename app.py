@@ -139,21 +139,21 @@ def predict():
         cp = int(request.form['cp'])
         bp = int(request.form['bp'])
         if bp == 1:
-            trestbps = 140
+            trestbps = 150
         else:
             trestbps = 120
         chol_simple = int(request.form['chol'])
         if chol_simple == 1:
-            chol = 240
+            chol = 260
         else:
             chol = 200
-        fbs = int(request.form['fbs'])
+        fbs = 1 if int(request.form['fbs']) == 1 else 0
        
         hr = int(request.form['hr'])
         if hr == 1:
-            thalach = 150
-        else:
             thalach = 100
+        else:
+            thalach = 150
         
         exang = int(request.form['exang'])
         restecg = 1
