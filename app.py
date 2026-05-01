@@ -111,13 +111,20 @@ def history():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
 
-    # ⚠️ We will create this table later
-    c.execute("SELECT * FROM history WHERE username=?", (session['user'],))
-    records = c.fetchall()
+    c.execute("SELECT prediction, risk_score, date FROM history WHERE user=?", (session['user'],))
+    rows = c.fetchall()
 
     conn.close()
 
-    return render_template("history.html", records=records)
+    history_data = []
+    for row in rows:
+        history_data.append({
+            "prediction": str(row[0]),
+            "risk_score": row[1],
+            "date": row[2]
+        })
+
+    return render_template("history.html", history=history_data)
 
 
 # ℹ️ About Page
