@@ -83,7 +83,7 @@
         <button type="submit">Check My Risk</button>
       </form>
 
-     <div id="result">
+     <div id="result-section">
        
      {% if prediction %}
     
@@ -127,5 +127,16 @@
    {% endif %}
    </div>
     </section>
+{% if prediction %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const section = document.getElementById("result-section");
+    const yOffset = -80;
+    const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+  });
+</script>
+{% endif %}
 
 {% endblock %}
