@@ -4,6 +4,12 @@ import joblib
 import numpy as np
 import sqlite3
 
+import os
+
+# 🔥 TEMP: Force delete old database (REMOVE AFTER FIX)
+if os.path.exists("database.db"):
+    os.remove("database.db")
+
 app = Flask(__name__)
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.debug = True
