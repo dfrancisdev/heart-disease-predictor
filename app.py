@@ -148,6 +148,7 @@ def predict():
         else:
             chol = 200
         fbs = 1 if int(request.form['fbs']) == 1 else 0
+        restecg = 1
        
         hr = int(request.form['hr'])
         if hr == 1:
@@ -156,7 +157,7 @@ def predict():
             thalach = 150
         
         exang = int(request.form['exang'])
-        restecg = 1
+        
         oldpeak = 1.0
         slope = 1
         ca = 0
