@@ -177,7 +177,7 @@ def predict():
 
         # Arrange data EXACTLY as in training
         data = np.array([[age, sex, cp, trestbps, chol, fbs, restecg,
-                          thalch, exang, oldpeak, slope, ca, thal]])
+                          thalach, exang, oldpeak, slope, ca, thal]])
 
         # Make prediction
         print("MODEL INPUT:", data)
