@@ -151,9 +151,9 @@ def predict():
        
         hr = int(request.form['hr'])
         if hr == 1:
-            thalch = 150
+            thalach = 150
         else:
-            thalch = 100
+            thalach = 100
         
         exang = int(request.form['exang'])
         restecg = 1
