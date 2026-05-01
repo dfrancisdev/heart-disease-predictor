@@ -32,8 +32,8 @@ def init_db():
         prediction TEXT
         risk_score REAL,
         date TEXT
-    )  
-        )
+       )  
+        
     ''')
     conn.commit()
     conn.close()
